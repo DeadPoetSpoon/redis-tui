@@ -86,7 +86,6 @@ impl EventHandler {
             handler,
         }
     }
-
     /// Receive the next event from the handler thread.
     ///
     /// This function will always block the current thread if

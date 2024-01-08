@@ -4,6 +4,7 @@ pub mod event;
 pub mod ui;
 pub mod tui;
 pub mod update;
+pub mod redis;
 
 use app::App;
 use color_eyre::Result;
@@ -33,6 +34,10 @@ fn main() -> Result<()> {
             Event::Mouse(_) => {}
             Event::Resize(_, _) => {}
         };
+        if app.draw_once {
+            tui.draw(&mut app)?;
+            app.draw_once = false;
+        }
     }
     tui.exit()?;
     Ok(())
